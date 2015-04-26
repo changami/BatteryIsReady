@@ -1,10 +1,10 @@
-package com.changami.app.batteryisready;
+package com.changami.app.batteryisready.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import com.changami.app.batteryisready.R;
 
 public class MainActivity extends ActionBarActivity {
 
