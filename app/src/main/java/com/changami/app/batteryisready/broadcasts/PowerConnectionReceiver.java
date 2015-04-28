@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
-import com.changami.app.batteryisready.services.TestService;
+import com.changami.app.batteryisready.services.WatchingBatteryService;
 
 public class PowerConnectionReceiver extends BroadcastReceiver {
     @Override
@@ -19,9 +19,9 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
         boolean isCharging = (status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL);
 
         if (isCharging) {
-            context.startService(new Intent(context, TestService.class));
+            context.startService(new Intent(context, WatchingBatteryService.class));
         } else {
-            context.stopService(new Intent(context, TestService.class));
+            context.stopService(new Intent(context, WatchingBatteryService.class));
         }
     }
 }
