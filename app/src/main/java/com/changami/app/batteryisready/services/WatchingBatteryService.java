@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.os.Vibrator;
+import com.changami.app.batteryisready.R;
 
 public class WatchingBatteryService extends Service {
 
@@ -29,7 +30,7 @@ public class WatchingBatteryService extends Service {
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                int batteryLevel = intent.getIntExtra("level", 0);
+                int batteryLevel = intent.getIntExtra(getString(R.string.battery_level), 0);
                 if (batteryLevel > 99/*TODO*/) {
                     vibrator.vibrate(PATTERN, 0);
                 }
