@@ -1,17 +1,26 @@
 package com.changami.app.batteryisready.activities;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.changami.app.batteryisready.R;
 
 public class MainActivity extends ActionBarActivity {
 
+    SharedPreferences preference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preference = getSharedPreferences(getString(R.string.preference_name), Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = preference.edit();
+        prefEditor.putBoolean(getString(R.string.preference_available), true);
+        prefEditor.apply();
     }
 
 
