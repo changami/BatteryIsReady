@@ -6,9 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import com.changami.app.batteryisready.R;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements CompoundButton.OnCheckedChangeListener {
+
+    @InjectView(R.id.switch_on_off)
+    Switch switchOnOff;
 
     SharedPreferences preference;
 
@@ -16,11 +23,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         preference = getSharedPreferences(getString(R.string.preference_name), Context.MODE_PRIVATE);
-        SharedPreferences.Editor prefEditor = preference.edit();
-        prefEditor.putBoolean(getString(R.string.preference_available), true);
-        prefEditor.apply();
+        ButterKnife.inject(this);
+
+        switchOnOff.setChecked(preference.getBoolean(getString(R.string.preference_available), false));
+        switchOnOff.setOnCheckedChangeListener(this);
     }
 
 
@@ -44,5 +51,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        SharedPreferences.Editor prefEditor = preference.edit();
+        prefEditor.putBoolean(getString(R.string.preference_available), isChecked);
+        prefEditor.apply();
     }
 }
