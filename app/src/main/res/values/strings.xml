@@ -8,4 +8,6 @@
 
     <string name="preference_name">battery_is_ready_pref</string>
     <string name="preference_available">available</string>
+
+    <string name="label_on_off">ON/OFF</string>
 </resources>
