@@ -3,16 +3,19 @@ package com.changami.app.batteryisready.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+
 import com.changami.app.batteryisready.R;
 
-public class MainActivity extends ActionBarActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     @InjectView(R.id.switch_on_off)
     Switch switchOnOff;
@@ -23,9 +26,12 @@ public class MainActivity extends ActionBarActivity implements CompoundButton.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        preference = getSharedPreferences(getString(R.string.preference_name), Context.MODE_PRIVATE);
         ButterKnife.inject(this);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        preference = getSharedPreferences(getString(R.string.preference_name), Context.MODE_PRIVATE);
         switchOnOff.setChecked(preference.getBoolean(getString(R.string.preference_available), false));
         switchOnOff.setOnCheckedChangeListener(this);
     }
