@@ -15,7 +15,7 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
         isAvailable = preference.getBoolean(context.getString(R.string.preference_available), false);
 
         // ACTION_POWER_CONNECTED doesn't have EXTRA_STATUS.
-        Intent chargingIntent = context.registerReceiver(null, new IntentFilter(
+        Intent chargingIntent = context.getApplicationContext().registerReceiver(null, new IntentFilter(
                 Intent.ACTION_BATTERY_CHANGED));
         assert chargingIntent != null;
         final int status = chargingIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
