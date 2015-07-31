@@ -10,4 +10,5 @@
     <string name="preference_available">available</string>
 
     <string name="label_on_off">ON/OFF</string>
+    <string name="label_notification">If battery is above %1$d%%, I\'ll tell you.</string>
 </resources>
