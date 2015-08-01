@@ -8,7 +8,12 @@
 
     <string name="preference_name">battery_is_ready_pref</string>
     <string name="preference_available">available</string>
+    <string name="preference_target_volume">target_volume</string>
 
     <string name="label_on_off">ON/OFF</string>
-    <string name="label_notification">If battery is above %1$d%%, I\'ll tell you.</string>
+    <string name="label_value">Notify If battery reach this amount(%):</string>
+    <string name="label_plus">+</string>
+    <string name="label_minus">-</string>
+    <string name="notification_running">If battery is above %1$d%%, I\'ll tell you.</string>
+    <string name="notification_guide">Please disconnect from Power to stop Notification.</string>
 </resources>
